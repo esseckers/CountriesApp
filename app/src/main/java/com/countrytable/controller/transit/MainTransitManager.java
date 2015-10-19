@@ -3,7 +3,7 @@ package com.countrytable.controller.transit;
 import android.app.Activity;
 
 import com.countrytable.view.fragment.CountriesTableFragment;
-import com.countrytable.view.fragment.MapFragment;
+import com.countrytable.view.fragment.MainMapFragment;
 import com.fsm.transit.core.AbstractTransitManager;
 import com.fsm.transit.core.TransitData;
 import com.fsm.transit.core.TransitResultData;
@@ -20,6 +20,6 @@ public class MainTransitManager extends AbstractTransitManager<FragmentAction> {
     }
 
     {
-        transitionsMap.put(new TransitData<FragmentAction>(CountriesTableFragment.class, FragmentAction.FRAGM_MAP), new TransitResultData<FragmentAction>(MapFragment.class, true));
+        transitionsMap.put(new TransitData<FragmentAction>(CountriesTableFragment.class, FragmentAction.FRAGM_MAP), new TransitResultData<FragmentAction>(MainMapFragment.class, true));
     }
 }

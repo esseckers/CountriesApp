@@ -14,12 +14,18 @@ import butterknife.ButterKnife;
 
 public class CountriesAdapter extends AbstractAdapter<Country> {
 
+    private OnItemClickListener listener;
+
     public CountriesAdapter(Context context, int resource) {
         super(context, resource);
     }
 
+    public void setListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         Holder holder;
         if (convertView == null) {
             convertView = LayoutInflater.from(parent.getContext()).inflate(resource, parent, false);
@@ -34,6 +40,15 @@ public class CountriesAdapter extends AbstractAdapter<Country> {
         holder.tvLat.setText(String.valueOf(getItem(position).getCityLatitude()));
         holder.tvLon.setText(String.valueOf(getItem(position).getCityLongitude()));
         holder.tvPlusTime.setText(String.valueOf(getItem(position).getExperimentalEconomPlusTime()));
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onItemClick(getItem(position));
+                }
+            }
+        });
         return convertView;
     }
 
@@ -57,5 +72,9 @@ public class CountriesAdapter extends AbstractAdapter<Country> {
         public Holder(View convertView) {
             ButterKnife.bind(this, convertView);
         }
+    }
+
+   public interface OnItemClickListener {
+        void onItemClick(Country country);
     }
 }

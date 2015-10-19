@@ -7,7 +7,9 @@ import android.view.Display;
 import android.view.WindowManager;
 
 public class Utils {
-    
+
+    public final static String BUNDLE_KEY = "country";
+
     public static WindowManager.LayoutParams dialogSize(Dialog dialog, Activity activity) {
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());

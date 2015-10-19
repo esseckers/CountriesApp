@@ -30,11 +30,15 @@ public abstract class AbstractFragment extends Fragment {
         View view = inflater.inflate(getViewLayout(), container, false);
         ButterKnife.bind(this, view);
         initView(view);
+        initView(view, savedInstanceState);
         return view;
     }
 
     protected void initView(View view) {
+        initView(view, null);
+    }
 
+    protected void initView(View view, Bundle bundle) {
     }
 
     protected int getViewLayout() {
